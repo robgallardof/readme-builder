@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readme-builder-svg"
+version = "0.1.0"
+description = "Offline README design system with original SVG components and agent prompts"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Roberto Gallardo"}]
+readme = "README.md"
+dependencies = []
+
+[project.scripts]
+readme-builder = "readme_builder.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["readme_builder*"]

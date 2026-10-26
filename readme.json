@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "name": "readme-builder",
+  "theme": "aurora",
+  "documents": [
+    {
+      "file": "README.md",
+      "language": "en",
+      "label": "English",
+      "eyebrow": "THE README IS PART OF THE PRODUCT",
+      "tagline": "Give your next repository a first impression worth keeping.",
+      "features": [
+        {"title": "Your content, first", "text": "Write the story from real repository evidence. Keep the commands, limits and details that matter.", "icon": "file"},
+        {"title": "A visual language", "text": "Original line icons, numbered sections, themed banners and reusable widgets. All SVG, all local.", "icon": "palette"},
+        {"title": "Built to stay yours", "text": "No rendering service, API key or runtime package. Commit the assets and let GitHub display them.", "icon": "shield"}
+      ],
+      "metrics": [
+        {"value": "0", "label": "runtime packages"},
+        {"value": "3", "label": "colour themes"},
+        {"value": "8", "label": "component families"},
+        {"value": "EN / ES", "label": "example documents"}
+      ],
+      "terminal": {"title": "A small authoring loop", "lines": [
+        "$ python -m readme_builder build examples/project.json --output demo",
+        "$ python -m readme_builder check demo",
+        "$ python -m readme_builder preview demo --output demo/preview.html"
+      ]},
+      "sections": [
+        {"id": "start", "title": "Start with a real repository", "icon": "rocket", "source": "content/en/start.md"},
+        {"id": "components", "title": "A small, original design system", "icon": "layers", "source": "content/en/components.md"},
+        {"id": "migrate", "title": "Keep the README. Upgrade the presentation.", "icon": "repeat", "source": "content/en/migrate.md"},
+        {"id": "agents", "title": "Bring your agent. Keep your judgment.", "icon": "bot", "source": "content/en/agents.md"},
+        {"id": "workflow", "title": "Author. Generate. Review.", "icon": "workflow", "source": "content/en/workflow.md"},
+        {"id": "limits", "title": "What this tool promises", "icon": "shield", "source": "content/en/limits.md"},
+        {"id": "develop", "title": "Build it with us", "icon": "code", "source": "content/en/develop.md"}
+      ]
+    },
+    {
+      "file": "README.es.md",
+      "language": "es",
+      "label": "Español",
+      "eyebrow": "EL README TAMBIÉN ES PARTE DEL PRODUCTO",
+      "tagline": "La primera impresión de tu próximo repositorio, hecha con intención.",
+      "features": [
+        {"title": "Primero el contenido", "text": "Escribe a partir del repositorio real. Conserva los comandos, los límites y los detalles que importan.", "icon": "file"},
+        {"title": "Un lenguaje visual", "text": "Iconos originales, secciones numeradas, banners y widgets reutilizables. SVG locales, bajo tu control.", "icon": "palette"},
+        {"title": "Siempre tuyo", "text": "Sin servicio de render, clave de API ni paquetes en ejecución. Guarda los recursos en Git y listo.", "icon": "shield"}
+      ],
+      "metrics": [
+        {"value": "0", "label": "paquetes en ejecución"},
+        {"value": "3", "label": "temas de color"},
+        {"value": "8", "label": "familias de componentes"},
+        {"value": "EN / ES", "label": "documentos de ejemplo"}
+      ],
+      "terminal": {"title": "Un ciclo de autoría pequeño", "lines": [
+        "$ python -m readme_builder build examples/project.json --output demo",
+        "$ python -m readme_builder check demo",
+        "$ python -m readme_builder preview demo --output demo/preview.html"
+      ]},
+      "sections": [
+        {"id": "inicio", "title": "Empieza con un repositorio real", "icon": "rocket", "source": "content/es/start.md"},
+        {"id": "componentes", "title": "Un sistema visual pequeño y propio", "icon": "layers", "source": "content/es/components.md"},
+        {"id": "migrar", "title": "Conserva el README. Mejora su presentación.", "icon": "repeat", "source": "content/es/migrate.md"},
+        {"id": "agentes", "title": "Trae a tu agente. Conserva tu criterio.", "icon": "bot", "source": "content/es/agents.md"},
+        {"id": "flujo", "title": "Escribe. Genera. Revisa.", "icon": "workflow", "source": "content/es/workflow.md"},
+        {"id": "limites", "title": "Qué promete esta herramienta", "icon": "shield", "source": "content/es/limits.md"},
+        {"id": "desarrollo", "title": "Constrúyelo con nosotros", "icon": "code", "source": "content/es/develop.md"}
+      ]
+    }
+  ]
+}
