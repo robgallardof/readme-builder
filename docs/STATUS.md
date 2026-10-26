@@ -29,11 +29,15 @@
   dependencies in a temporary virtual environment, ran the installed command and
   generated the example project successfully. No package was installed globally.
 - The local proof sheet at 375px had no horizontal overflow or missing images.
+- GitHub rendered README reviewed after publishing `87da758`: all 19 displayed
+  images loaded and all eight authored navigation targets resolved.
+- [CI run 40421646243](https://github.com/robgallardof/readme-builder/actions/runs/40421646243)
+  passed all six jobs: Windows/Linux/macOS, each on Python 3.11 and 3.14. Each job
+  executed behaviour tests, generated-output checks and the README/SVG audit.
 
 ## Limits and not executed
 
-- Python 3.11, Linux/macOS host execution and the new GitHub Actions matrix:
-  **NOT EXECUTED locally**; CI is configured to run them on push.
+- Python 3.11 and Linux/macOS host execution were verified in CI, not locally.
 - Package registry publication, remote link availability, screen-reader testing
   and third-party MCP/agent installations: **NOT EXECUTED**.
 - Copy remains authored, metrics remain static, and the migration scanner does
