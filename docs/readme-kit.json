@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "theme": "nebula",
+  "assets": "assets/readme-builder/kit",
+  "blocks": [
+    {"id": "kit-parts", "type": "bento", "columns": 3, "cells": [
+      {"span": 2, "icon": "link", "kicker": {"en": "Sheen", "es": "Brillo"}, "title": {"en": "Button", "es": "Botón"},
+       "text": {"en": "Links, navigation, language switch and back to top, in outline or primary.", "es": "Enlaces, navegación, idioma y volver arriba, con borde o primario."}},
+      {"icon": "chart", "kicker": {"en": "Glint", "es": "Destello"}, "title": "Stats",
+       "text": {"en": "Short declared facts instead of a · b · c text.", "es": "Datos cortos declarados en vez de texto a · b · c."}},
+      {"icon": "repeat", "kicker": {"en": "Flow", "es": "Flujo"}, "title": {"en": "Wave", "es": "Onda"},
+       "text": {"en": "The divider between sections.", "es": "El separador entre secciones."}},
+      {"icon": "flag", "kicker": {"en": "Light", "es": "Luz"}, "title": {"en": "Heading", "es": "Encabezado"},
+       "text": {"en": "A numbered opener for profiles and landing pages.", "es": "Apertura numerada para perfiles y landings."}},
+      {"icon": "layers", "kicker": {"en": "Pulse", "es": "Pulso"}, "title": {"en": "Card", "es": "Tarjeta"},
+       "text": {"en": "Linkable cards, two per row, with tags and a badge.", "es": "Tarjetas enlazables, dos por fila, con etiquetas e insignia."}},
+      {"span": 2, "icon": "box", "kicker": {"en": "Orbs", "es": "Esferas"}, "title": "Bento",
+       "text": {"en": "A grid with cells of different widths, like this one.", "es": "Una cuadrícula con celdas de distinto ancho, como esta."}},
+      {"icon": "settings", "kicker": {"en": "Still", "es": "Quieto"}, "title": {"en": "Panels", "es": "Paneles"},
+       "text": {"en": "Grouped chips or short lists.", "es": "Chips agrupados o listas cortas."}}
+    ]}
+  ]
+}

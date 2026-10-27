@@ -1,6 +1,7 @@
 {
   "version": 1,
   "name": "readme-builder",
+  "kit": "docs/readme-kit.json",
   "theme": "aurora",
   "documents": [
     {

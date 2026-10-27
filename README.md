@@ -90,15 +90,9 @@ Headings and feature descriptions use real Markdown so text wraps at the reader'
 Plain link rows and walls of text become designed pieces. Every kit component has
 light and dark variants, slow CSS-only motion and a `prefers-reduced-motion` off switch.
 
-| Component | Use it for | Motion |
-|---|---|---|
-| **Button** | Links, navigation, language switch, back to top | A sheen on primary buttons |
-| **Stats** | A row of short, declared facts instead of `a · b · c` text | A glint on each top rule |
-| **Wave** | The divider between sections | Two lines flow in opposite directions |
-| **Heading** | A numbered section opener for profiles and landing pages | A light travels along the rule |
-| **Card** | Linkable project cards, two per row | A status pulse on badges |
-| **Bento** | An about grid with cells of different widths | Soft orbs on wide cells |
-| **Panels** | Grouped chips (a stack) or short lists (a toolbox) | Still |
+<!-- kit:kit-parts -->
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/kit-parts-en-dark.svg" /><img src="assets/readme-builder/kit/kit-parts-en-light.svg" alt="Button: Links, navigation, language switch and back to top, in outline or primary. · Stats: Short declared facts instead of a · b · c text. · Wave: The divider between sections. · Heading: A numbered opener for profiles and landing pages. · Card: Linkable cards, two per row, with tags and a badge. · Bento: A grid with cells of different widths, like this one. · Panels: Grouped chips or short lists." width="100%" /></picture></p>
+<!-- /kit:kit-parts -->
 
 Fill marked blocks from a JSON spec, or upgrade an existing README in place:
 
@@ -108,7 +102,7 @@ python -m readme_builder kit upgrade README.md            # dry run
 python -m readme_builder kit upgrade README*.md --write   # buttons and wave dividers
 ```
 
-`build` already uses kit buttons and waves. See the [kit guide](docs/KIT.md); the
+`build` already uses kit buttons and waves, and a `"kit"` key in `readme.json` lets section sources carry any of these blocks; the grid above is one. See the [kit guide](docs/KIT.md); the
 [profile](https://github.com/robgallardof) is built entirely with it.
 
 <p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>

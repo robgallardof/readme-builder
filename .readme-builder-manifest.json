@@ -1,6 +1,6 @@
 {
-  "README.es.md": "d8206ee347237bc120a2bb23bb340b4da897461fe98ea9c7b162e18da11f4129",
-  "README.md": "fe5ae76276af25db983657f29682c0c861c99440d37831ecf00b6271b409e166",
+  "README.es.md": "201493e03ca36197e3ff49518fbd6f30aeb3525ed77e5f35e81e70f47657ee02",
+  "README.md": "1e435de0030e39bc4fe43558c77091da735f0b5cac6449d44a09df50717a26c3",
   "assets/readme-builder/divider.svg": "5f1f2acc0e148bb344405d08d64210528d4cd58ef469d7ff0da2d41550d60dcc",
   "assets/readme-builder/en/diagram-05-dark.svg": "d8519734397a53b7d50f9fd386f78ff9b4fbd19da3c82654a9c787894715608d",
   "assets/readme-builder/en/diagram-05-light.svg": "59bd69d1595e398de07336f95d558c182bf18297264fee304e151365fea818aa",
@@ -77,5 +77,9 @@
   "assets/readme-builder/kit/btn-un-sistema-visual-pequeno-y-propio-outline-sm-light.svg": "8e92170957e268d5a502d67527d16df0383fbb10a4058315938b4e4f21417d46",
   "assets/readme-builder/kit/btn-volver-al-inicio-outline-sm-dark.svg": "358be939abb802bc9b1b5ade902a6cbce7a49c5364c23f7bee76a690672d6702",
   "assets/readme-builder/kit/btn-volver-al-inicio-outline-sm-light.svg": "d7c08e86ae0364f55f0c35cf309d7b3673fdc1fbb97be90e1f6dc9a83f02f716",
+  "assets/readme-builder/kit/kit-parts-en-dark.svg": "12e4328cddca487c9fb514e66a417b941697363c28f133985bfd62e5077a3956",
+  "assets/readme-builder/kit/kit-parts-en-light.svg": "796efd14e573d29d512ae53e57a974d50fc2dd10d6330274627676c2a20513cc",
+  "assets/readme-builder/kit/kit-parts-es-dark.svg": "fd6146939b5d1e34a9320649de902c1799ae3186051877d479f6a818ee5cc9d4",
+  "assets/readme-builder/kit/kit-parts-es-light.svg": "ec1d4354745017fd64894a1ac29acc33b47b9ae3793063d9bde89d6c83eb1e23",
   "assets/readme-builder/kit/wave.svg": "80d85a011dedefd1a4609c01818566027d05266f9411b51656989f14b232f370"
 }

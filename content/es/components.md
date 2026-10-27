@@ -46,15 +46,8 @@ Las filas de enlaces y los bloques de texto plano se vuelven piezas diseñadas. 
 componente tiene versión clara y oscura, movimiento lento solo con CSS y respeta
 `prefers-reduced-motion`.
 
-| Componente | Para qué | Movimiento |
-|---|---|---|
-| **Botón** | Enlaces, navegación, idioma, volver arriba | Un brillo en los botones primarios |
-| **Stats** | Una fila de datos cortos en lugar de texto `a · b · c` | Un destello en cada línea superior |
-| **Onda** | El separador entre secciones | Dos líneas que fluyen en sentidos opuestos |
-| **Encabezado** | Apertura numerada de sección para perfiles y landings | Una luz que recorre la línea |
-| **Tarjeta** | Tarjetas de proyecto enlazables, dos por fila | Un pulso en las insignias |
-| **Bento** | Una cuadrícula "sobre mí" con celdas de distinto ancho | Esferas suaves en celdas anchas |
-| **Paneles** | Chips agrupados (stack) o listas cortas (herramientas) | Sin movimiento |
+<!-- kit:kit-parts -->
+<!-- /kit:kit-parts -->
 
 Rellena bloques marcados desde un JSON o mejora un README existente:
 
@@ -64,5 +57,5 @@ python -m readme_builder kit upgrade README.md            # simulación
 python -m readme_builder kit upgrade README*.md --write   # botones y separadores de onda
 ```
 
-`build` ya usa botones y ondas del kit. Consulta la [guía del kit](docs/KIT.md); el
+`build` ya usa botones y ondas del kit, y la clave `"kit"` de `readme.json` permite poner cualquiera de estos bloques en las secciones; la cuadrícula de arriba es uno. Consulta la [guía del kit](docs/KIT.md); el
 [perfil](https://github.com/robgallardof) está hecho por completo con él.
