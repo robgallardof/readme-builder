@@ -38,4 +38,4 @@ no CDN or JavaScript is needed. Existing SVG/SMIL animations are preserved.
 
 Owner branding is optional: provide your logo and profile through `branding`. The final signature remains last. For a requested diagram, prefer Archify and import its verified light/dark SVG exports.
 
-Headings and feature descriptions use real Markdown so text wraps at the reader's font size. The hero is the only animated component; separators, icons, diagrams and the compact signature stay still.
+Headings and feature descriptions use real Markdown so text wraps at the reader's font size. The hero is the only animated component; separators, icons, diagrams and the closing signature stay still.

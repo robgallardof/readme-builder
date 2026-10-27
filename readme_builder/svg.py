@@ -2,6 +2,8 @@
 
 from html import escape
 import textwrap
+import re
+import xml.etree.ElementTree as ET
 
 from .icons import glyph
 
@@ -35,6 +37,7 @@ def frame(width, height, title, body, p):
             f'viewBox="0 0 {width} {height}" role="img" aria-label="{escape(title, quote=True)}">'
             f'<title>{escape(title)}</title><defs>'
             f'<linearGradient id="brand"><stop stop-color="{p["a"]}"/>'
+            + (f'<stop offset=".55" stop-color="{p["brand_mid"]}"/>' if p.get('brand_mid') else '') +
             f'<stop offset="1" stop-color="{p["b"]}"/></linearGradient></defs>'
             '<style>text{font-family:Inter,Segoe UI,Arial,sans-serif}</style>'
             f'{body}</svg>\n')
@@ -143,19 +146,42 @@ def pipeline(steps, theme="aurora", mode="dark"):
     return frame(1200, 130, " → ".join(steps), b, p)
 
 
-def footer(name, theme="aurora", mode="dark", branding=None):
-    """Render a small closing signature."""
+def footer(name, theme="aurora", mode="dark", branding=None, header=None):
+    """Render a static closing banner with the cover's proportions and palette."""
     p = palette(theme, mode)
+    p['bg_end'] = p['bg']
+    p['fg_end'] = p['fg']
+    if header:
+        # Copy colour values, never arbitrary CSS or executable header markup.
+        root = ET.fromstring(header)
+        for identifier, keys in [('bg', ('bg', 'bg_end')), ('brand', ('a', 'b')), ('name', ('fg', 'fg_end'))]:
+            gradient = next((n for n in root.iter() if n.get('id') == identifier), None)
+            if gradient is not None:
+                stops = [n.get('stop-color', '') for n in gradient if re.fullmatch(r'#[0-9a-fA-F]{6}', n.get('stop-color', ''))]
+                if stops:
+                    p[keys[0]], p[keys[1]] = stops[0], stops[-1]
+                    if identifier == 'brand' and len(stops) > 2:
+                        p['brand_mid'] = stops[1]
+        styles = '\n'.join(n.text or '' for n in root.iter() if n.tag.rsplit('}', 1)[-1] == 'style')
+        tag_color = re.search(r'\.tag\s*\{[^}]*\bfill:\s*(#[0-9a-fA-F]{6})\b', styles)
+        if tag_color:
+            p['muted'] = tag_color[1]
     if branding:
-        b = f'<rect width="400" height="164" rx="16" fill="{p["bg"]}"/>'
-        b += '<path d="M32 1h336" stroke="url(#brand)" opacity=".3"/>'
-        b += f'<image href="{escape(branding["logo_data"], quote=True)}" x="174" y="18" width="52" height="52"/>'
-        b += text(200, 103, branding["author"], 20, p["fg"], 700, text_anchor="middle")
-        size = min(14, int(348 / max(len(name), 1) / .6))
-        b += text(200, 132, name, size, p["muted"], text_anchor="middle")
-        return frame(400, 164, name + " / " + branding["author"], b, p)
-    b = f'<rect width="1200" height="100" rx="16" fill="{p["bg"]}"/>'
-    b += '<path d="M0 1h1200" stroke="url(#brand)"/>'
-    b += text(30, 59, name, 23, p["fg"], 700)
-    b += glyph("layers", p["a"], "translate(1138 34) scale(1.4)")
-    return frame(1200, 100, name, b, p)
+        b = f'<defs><linearGradient id="closing-bg" x2="1" y2="1"><stop stop-color="{p["bg"]}"/><stop offset="1" stop-color="{p["bg_end"]}"/></linearGradient><pattern id="closing-grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="{p["muted"]}" opacity=".07"/></pattern><clipPath id="closing-card"><rect width="1200" height="260" rx="24"/></clipPath></defs>'
+        b += f'<defs><linearGradient id="closing-name"><stop stop-color="{p["fg"]}"/><stop offset="1" stop-color="{p["fg_end"]}"/></linearGradient></defs>'
+        b += '<g clip-path="url(#closing-card)"><rect width="1200" height="260" fill="url(#closing-bg)"/><rect width="1200" height="260" fill="url(#closing-grid)"/>'
+        b += '<path d="M0 259h1200" stroke="url(#brand)" stroke-width="3" opacity=".6"/></g>'
+        b += f'<rect x=".5" y=".5" width="1199" height="259" rx="24" fill="none" stroke="{p["line"]}"/>'
+        b += '<rect x="64" y="46" width="168" height="168" rx="36" fill="url(#brand)" opacity=".16"/>'
+        b += f'<image href="{escape(branding["logo_data"], quote=True)}" x="80" y="62" width="136" height="136"/>'
+        size = min(64, int(800 / max(len(branding['author']), 1) / .6))
+        b += text(284, 127, branding['author'], size, 'url(#closing-name)', 800, letter_spacing='-1.5')
+        size = min(25, int(800 / max(len(name), 1) / .6))
+        b += text(288, 175, name, size, p['muted'], 500)
+        return frame(1200, 260, name + " / " + branding["author"], b, p)
+    b = f'<rect width="1200" height="180" rx="24" fill="{p["bg"]}"/>'
+    b += '<path d="M24 179h1152" stroke="url(#brand)" opacity=".5"/>'
+    size = min(52, int(980 / max(len(name), 1) / .6))
+    b += text(56, 110, name, size, p["fg"], 800)
+    b += glyph("layers", p["a"], "translate(1080 60) scale(2.5)")
+    return frame(1200, 180, name, b, p)

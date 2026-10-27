@@ -79,7 +79,7 @@ sin CDN ni JavaScript. Las animaciones SVG/SMIL existentes se conservan.
 
 La firma es optativa: indica tu logo y perfil en `branding`. La firma queda al final. Cuando se pida un diagrama, prioriza Archify e importa sus SVG claros y oscuros ya verificados.
 
-Los titulos y las descripciones usan Markdown para adaptarse al ancho disponible. Solo el fondo de la portada tiene movimiento: los separadores, iconos, diagramas y la firma compacta permanecen estaticos.
+Los titulos y las descripciones usan Markdown para adaptarse al ancho disponible. Solo el fondo de la portada tiene movimiento: los separadores, iconos, diagramas y la firma de cierre permanecen estaticos.
 
 <a id="migrar"></a>
 
@@ -190,5 +190,5 @@ debe ser portable, accesible y útil fuera de un solo repositorio.
 <p align="center"><a href="#top">Volver al inicio</a></p>
 
 <!-- readme-builder:signature:start -->
-<p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="360" /></picture></a></p>
+<p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="100%" /></picture></a></p>
 <!-- readme-builder:signature:end -->

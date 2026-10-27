@@ -58,6 +58,10 @@ Use `stage` on every section to request deterministic beginner-to-advanced order
 Keep the signature as the final block; back-to-top links and credits belong before it.
 Use the repository owner's supplied logo through `branding`, not an invented substitute.
 Never impose Roberto's personal signature on a different owner's project.
+Match the footer to the accepted header: same canvas width, logo treatment,
+palette, rounded frame and type hierarchy, with a shorter closing composition.
+For an existing SVG cover, set `branding.headers` to its light/dark paths so the
+generator can reuse its colours. Preserve the header and keep the footer static.
 
 ## Diagrams: prefer Archify when requested
 

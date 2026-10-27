@@ -38,4 +38,4 @@ sin CDN ni JavaScript. Las animaciones SVG/SMIL existentes se conservan.
 
 La firma es optativa: indica tu logo y perfil en `branding`. La firma queda al final. Cuando se pida un diagrama, prioriza Archify e importa sus SVG claros y oscuros ya verificados.
 
-Los titulos y las descripciones usan Markdown para adaptarse al ancho disponible. Solo el fondo de la portada tiene movimiento: los separadores, iconos, diagramas y la firma compacta permanecen estaticos.
+Los titulos y las descripciones usan Markdown para adaptarse al ancho disponible. Solo el fondo de la portada tiene movimiento: los separadores, iconos, diagramas y la firma de cierre permanecen estaticos.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-26 / Header-matched footers
+
+- Added full-width owner closing banners that reuse the accepted header palette and logo treatment.
+- Kept headers and motion unchanged; imported header SVGs are read-only.
+
+
 ## 2026-10-26 / Reading rhythm and background motion
 
 - Replaced progress-like traces and finite flashes with an opt-in, continuous hero background.

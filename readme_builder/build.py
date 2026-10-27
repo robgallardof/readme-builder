@@ -80,6 +80,9 @@ def validate(config):
         bounded(branding.get("author"), "branding author", 64)
         if not isinstance(branding.get("logo"), str):
             raise ValueError("branding logo must name a local PNG or JPEG file")
+        headers = branding.get('headers')
+        if headers is not None and (not isinstance(headers, dict) or not all(isinstance(headers.get(mode), str) for mode in ('light', 'dark'))):
+            raise ValueError('branding headers need local light and dark SVG paths')
         profile = urlsplit(branding.get("profile", ""))
         if profile.scheme != "https" or not profile.hostname or profile.username or profile.password:
             raise ValueError("branding profile must be a credential-free HTTPS URL")
@@ -221,11 +224,13 @@ def render(config, source_root):
                     files[f"{base}-{mode}.svg"] = content
                 parts.append(picture(base, diagram["alt"]))
         for mode in ("light", "dark"):
-            files[f"{prefix}/footer-{mode}.svg"] = svg.footer(config["name"], theme, mode, branding)
+            header = None
+            if branding and branding.get('headers'):
+                header = local(source_root, branding['headers'][mode]).read_text(encoding='utf-8')
+                validate_svg(header)
+            files[f"{prefix}/footer-{mode}.svg"] = svg.footer(config["name"], theme, mode, branding, header)
         parts.append('<p align="center"><a href="#top">' + ("Volver al inicio" if language == "es" else "Back to top") + '</a></p>')
         signature = picture(f"{prefix}/footer", config["name"])
-        if branding:
-            signature = signature.replace('width="100%"', 'width="360"')
         if branding:
             signature = f'<a href="{escape(branding["profile"], quote=True)}">{signature}</a>'
         parts.append('<!-- readme-builder:signature:start -->\n<p align="center">' + signature + '</p>\n<!-- readme-builder:signature:end -->')

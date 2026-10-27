@@ -16,6 +16,13 @@ Top-level fields:
 | `motion` | `subtle` (default; slow continuous background opacity), `ambient` (slightly stronger), or `off`. Only explicitly authored hero background layers animate. Icons, headings, dividers, signatures and diagrams stay static. Reduced-motion preference always wins. |
 | `documents` | One or more documents with distinct languages and output filenames. |
 
+Owner signatures use the hero's 1200-unit canvas, large logo, rounded frame and
+theme palette. The closing banner is shorter and remains static. For an existing
+cover, optional `branding.headers` accepts `light` and `dark` local SVG paths;
+the footer takes its background and accent colours from `bg`, `brand` and `name`
+gradients. Header files are read and validated, never rewritten. Without an SVG
+header, the configured theme supplies the palette.
+
 Each document:
 
 | Field | Meaning |
