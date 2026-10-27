@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-26 / Reading rhythm and background motion
+
+- Replaced progress-like traces and finite flashes with an opt-in, continuous hero background.
+- Kept icons, separators, diagrams and signatures static; respected reduced motion.
+- Used native headings and feature text, short navigation and compact owner signatures.
+
+
 ## 0.1.0 — 2026-10-26
 
 - Offline Python CLI for authored Markdown and original SVG components.

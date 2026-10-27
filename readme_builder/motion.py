@@ -1,4 +1,4 @@
-"""Self-contained, bounded SVG motion; existing artwork bytes remain recoverable."""
+"""Self-contained background-only SVG motion; existing artwork bytes remain recoverable."""
 import re
 import math
 from urllib.parse import unquote
@@ -53,7 +53,7 @@ def validate_svg(source, _depth=0):
 
 
 def animate_svg(source, preset='subtle'):
-    """Add decorative motion without moving text; off restores the original SVG."""
+    """Animate an opted-in hero background; keep document furniture static."""
     if preset not in PRESETS:
         raise ValueError('motion must be off, subtle or ambient')
     source = re.sub(re.escape(START) + r'.*?' + re.escape(END), '', source, flags=re.S)
@@ -72,17 +72,19 @@ def animate_svg(source, preset='subtle'):
         raise ValueError('invalid SVG dimensions')
     if not list(root):
         return source
-    duration, repeat = ('2s','2') if preset == 'subtle' else ('8s','infinite')
+    # Motion belongs only to an explicitly authored background layer. A generic
+    # SVG may be an icon, divider, signature, diagram or a screenshot of text.
+    if root.get('data-readme-component') != 'hero' or not any(
+        'rb-ambient' in node.get('class', '').split() for node in root.iter()
+    ):
+        return source
+    duration, low, high = ('20s', '.38', '.58') if preset == 'subtle' else ('16s', '.3', '.7')
     css = f'''<style data-readme-builder-motion="1">
-@keyframes rb-accent {{0%,100%{{filter:brightness(1)}}50%{{filter:brightness(1.3)}}}}
-@keyframes rb-trace {{from{{stroke-dashoffset:{width:g}}}to{{stroke-dashoffset:0}}}}
-svg[data-readme-motion] .rb-motion-line{{animation:rb-trace {duration} ease-in-out {repeat};stroke-dasharray:{width*.12:g} {width:g};stroke-dashoffset:0;opacity:.55}}
-svg[data-readme-motion] &gt; path,svg[data-readme-motion] &gt; g:not(.rb-motion-layer){{animation:rb-accent {duration} ease-in-out {repeat}}}
-@media (prefers-reduced-motion:reduce){{svg[data-readme-motion] .rb-motion-line,svg[data-readme-motion] &gt; path,svg[data-readme-motion] &gt; g:not(.rb-motion-layer){{animation:none!important;filter:none!important}}}}
+@keyframes rb-atmosphere {{0%,100%{{opacity:{low}}}50%{{opacity:{high}}}}}
+svg[data-readme-motion] .rb-ambient{{animation:rb-atmosphere {duration} ease-in-out -5s infinite}}
+@media (prefers-reduced-motion:reduce){{svg[data-readme-motion] .rb-ambient{{animation:none!important;opacity:.48}}}}
 </style>'''
-    # Keep the accent in the top margin; never alter charts, prose, or data geometry.
-    line = '' if width <= 64 else f'<g class="rb-motion-layer" aria-hidden="true" pointer-events="none"><path class="rb-motion-line" d="M{x+width*.04:g} {y+min(2,height*.02):g}h{width*.92:g}" fill="none" stroke="#8b5cf6" stroke-width="{min(2,height*.04):g}" stroke-linecap="round"/></g>'
-    marker = START + css + line + END
+    marker = START + css + END
     opening = re.search(r'<svg\b[^>]*>',source)
     if opening is None:
         raise ValueError('SVG root was not found')

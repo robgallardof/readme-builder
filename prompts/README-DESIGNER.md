@@ -22,8 +22,13 @@ Deliver:
    environments, test results you actually ran, and important unknowns.
 2. An authored JSON configuration following `docs/CONFIGURATION.md`, with longer copy
    in local Markdown source files. Use original or bundled `lucide-` icon names, never decorative emoji. Keep upstream notices.
-   Center image rows, balance card columns, and separate major sections. Use `motion: subtle`
-   unless motion is inappropriate; never move body text or alter metric values. Honor reduced motion.
+   Center the hero and signature; align headings and prose to the same reading column.
+   Use real Markdown headings and text for feature descriptions so they wrap on mobile.
+   Do not stack a decorative divider beside every heading: GitHub already separates h2 sections.
+   Use `motion: subtle` only on an explicitly authored hero background. Keep icons,
+   diagrams, separators, signatures and all text still. Never use progress-like sweeps,
+   dashed traces, brightness filters, typing loops or finite animations that stop abruptly.
+   Use a seamless, low-amplitude loop and honor reduced motion.
 3. A useful first screen: identity, a concrete promise, a short route to getting started.
    Choose a few components; do not add widgets merely because they exist.
 4. Quickstart, useful examples, configuration, architecture only where it helps,

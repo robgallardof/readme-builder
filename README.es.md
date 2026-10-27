@@ -4,16 +4,19 @@
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/hero-dark.svg" /><img src="assets/readme-builder/es/hero-light.svg" alt="readme-builder — La primera impresión de tu próximo repositorio, hecha con intención." width="100%" /></picture></p>
 
-<p align="center"><a href="#inicio">Empieza con un repositorio real</a> · <a href="#componentes">Un sistema visual pequeño y propio</a> · <a href="#migrar">Conserva el README. Mejora su presentación.</a> · <a href="#agentes">Trae a tu agente. Conserva tu criterio.</a> · <a href="#flujo">Escribe. Genera. Revisa.</a> · <a href="#limites">Qué promete esta herramienta</a> · <a href="#desarrollo">Constrúyelo con nosotros</a></p>
+<p align="center"><strong>La primera impresión de tu próximo repositorio, hecha con intención.</strong></p>
+
+<p align="center"><a href="#inicio">Empieza con un repositorio real</a> · <a href="#componentes">Un sistema visual pequeño y propio</a> · <a href="#migrar">Conserva el README. Mejora su presentación.</a></p>
 
 <p align="center"><a href="README.md">English</a> · <a href="README.es.md">Español</a></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/features-dark.svg" /><img src="assets/readme-builder/es/features-light.svg" alt="Primero el contenido: Escribe a partir del repositorio real. Conserva los comandos, los límites y los detalles que importan. · Un lenguaje visual: Iconos originales, secciones numeradas, banners y widgets reutilizables. SVG locales, bajo tu control. · Siempre tuyo: Sin servicio de render, clave de API ni paquetes en ejecución. Guarda los recursos en Git y listo." width="100%" /></picture></p>
-
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
+- **Primero el contenido.** Escribe a partir del repositorio real. Conserva los comandos, los límites y los detalles que importan.
+- **Un lenguaje visual.** Iconos originales, secciones numeradas, banners y widgets reutilizables. SVG locales, bajo tu control.
+- **Siempre tuyo.** Sin servicio de render, clave de API ni paquetes en ejecución. Guarda los recursos en Git y listo.
 
 <a id="inicio"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-01-dark.svg" /><img src="assets/readme-builder/es/section-01-light.svg" alt="01 · Empieza con un repositorio real" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/rocket.svg" width="24" height="24" alt="" /> Empieza con un repositorio real
 
 **Python 3.11+ y Git. Nada más para ejecutar el generador.**
 
@@ -32,10 +35,9 @@ La carpeta de salida contiene Markdown y SVG portables. Copia los archivos gener
 a tu proyecto o genera allí después de revisar las rutas. El generador rechaza
 sobrescribir archivos que no le pertenecen; `--force` es una excepción explícita.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="componentes"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-02-dark.svg" /><img src="assets/readme-builder/es/section-02-light.svg" alt="02 · Un sistema visual pequeño y propio" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/layers.svg" width="24" height="24" alt="" /> Un sistema visual pequeño y propio
 
 | Componente | Para qué sirve |
 |---|---|
@@ -77,10 +79,11 @@ sin CDN ni JavaScript. Las animaciones SVG/SMIL existentes se conservan.
 
 La firma es optativa: indica tu logo y perfil en `branding`. La firma queda al final. Cuando se pida un diagrama, prioriza Archify e importa sus SVG claros y oscuros ya verificados.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
+Los titulos y las descripciones usan Markdown para adaptarse al ancho disponible. Solo el fondo de la portada tiene movimiento: los separadores, iconos, diagramas y la firma compacta permanecen estaticos.
 
 <a id="migrar"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-03-dark.svg" /><img src="assets/readme-builder/es/section-03-light.svg" alt="03 · Conserva el README. Mejora su presentación." width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/repeat.svg" width="24" height="24" alt="" /> Conserva el README. Mejora su presentación.
 
 Si ya tienes un README que te gusta, empieza con una simulación:
 
@@ -100,10 +103,9 @@ restantes. No visita enlaces remotos ni demuestra que las afirmaciones del proye
 sean ciertas. Revisa el diff en Markdown complejo: es un escáner conservador, no un
 parser completo. Conserva un commit antes de una migración grande.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="agentes"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-04-dark.svg" /><img src="assets/readme-builder/es/section-04-light.svg" alt="04 · Trae a tu agente. Conserva tu criterio." width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/bot.svg" width="24" height="24" alt="" /> Trae a tu agente. Conserva tu criterio.
 
 Entrega el repositorio y [el prompt maestro](prompts/README-DESIGNER.md) a tu agente.
 Pídele revisar comandos, pruebas y limitaciones reales antes de escribir. El prompt
@@ -119,10 +121,9 @@ produce un inventario de evidencia, una estructura editorial y el JSON del gener
 [contratos de roles](agents/README.md) separan evidencia, redacción y revisión visual.
 No instalan hooks, cambian configuraciones globales ni lanzan agentes automáticamente.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="flujo"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-05-dark.svg" /><img src="assets/readme-builder/es/section-05-light.svg" alt="05 · Escribe. Genera. Revisa." width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/workflow.svg" width="24" height="24" alt="" /> Escribe. Genera. Revisa.
 
 ```sh
 # Genera los README del builder en inglés y español.
@@ -149,10 +150,9 @@ El diagrama se generó y verificó con [Archify](https://github.com/tt-a1i/archi
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/diagram-05-dark.svg" /><img src="assets/readme-builder/es/diagram-05-light.svg" alt="De los hechos del repositorio a un README claro, generado con Archify" width="100%" /></picture></p>
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="limites"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-06-dark.svg" /><img src="assets/readme-builder/es/section-06-light.svg" alt="06 · Qué promete esta herramienta" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/shield.svg" width="24" height="24" alt="" /> Qué promete esta herramienta
 
 - Generador y sistema visual local, sin servicio de IA integrado.
 - Los prompts orientan al agente; el programa no los ejecuta ni corre comandos del proyecto.
@@ -167,10 +167,9 @@ La dirección visual nace de [Rekora](https://github.com/robgallardof/rekora),
 [el perfil de Roberto](https://github.com/robgallardof). El template no incluye
 contenido privado ni la redacción específica de esos proyectos.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="desarrollo"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/section-07-dark.svg" /><img src="assets/readme-builder/es/section-07-light.svg" alt="07 · Constrúyelo con nosotros" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/code.svg" width="24" height="24" alt="" /> Constrúyelo con nosotros
 
 ```sh
 python -m unittest discover -s tests -v
@@ -191,5 +190,5 @@ debe ser portable, accesible y útil fuera de un solo repositorio.
 <p align="center"><a href="#top">Volver al inicio</a></p>
 
 <!-- readme-builder:signature:start -->
-<p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="100%" /></picture></a></p>
+<p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="360" /></picture></a></p>
 <!-- readme-builder:signature:end -->

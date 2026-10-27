@@ -4,23 +4,25 @@
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/hero-dark.svg" /><img src="assets/readme-builder/en/hero-light.svg" alt="Your next project — A small example. Replace this copy with evidence from your repository." width="100%" /></picture></p>
 
+<p align="center"><strong>A small example. Replace this copy with evidence from your repository.</strong></p>
+
 <p align="center"><a href="#overview">What this project does</a> · <a href="#start">Quickstart</a> · <a href="#limits">Current limits</a></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/features-dark.svg" /><img src="assets/readme-builder/en/features-light.svg" alt="Clear purpose: Explain one concrete problem the project solves. Replace this placeholder before publishing. · An honest quickstart: Document the shortest verified path from clone to a useful result. · Visible boundaries: Describe current limits and link to the evidence that supports your claims." width="100%" /></picture></p>
+- **Clear purpose.** Explain one concrete problem the project solves. Replace this placeholder before publishing.
+- **An honest quickstart.** Document the shortest verified path from clone to a useful result.
+- **Visible boundaries.** Describe current limits and link to the evidence that supports your claims.
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/pipeline-dark.svg" /><img src="assets/readme-builder/en/pipeline-light.svg" alt="Read the repository · Write the story · Generate assets · Review the result" width="100%" /></picture></p>
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="overview"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/section-01-dark.svg" /><img src="assets/readme-builder/en/section-01-light.svg" alt="01 · What this project does" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/layers.svg" width="24" height="24" alt="" /> What this project does
 
 Replace this paragraph with the intended user, the problem, and the resulting behaviour. This is an authoring template, not an implemented product.
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="start"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/section-02-dark.svg" /><img src="assets/readme-builder/en/section-02-light.svg" alt="02 · Quickstart" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/rocket.svg" width="24" height="24" alt="" /> Quickstart
 
 List real requirements and commands you have verified. Label anything not executed.
 
@@ -28,10 +30,9 @@ List real requirements and commands you have verified. Label anything not execut
 # Replace with your project's verified setup command.
 ```
 
-<p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
-
 <a id="limits"></a>
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/section-03-dark.svg" /><img src="assets/readme-builder/en/section-03-light.svg" alt="03 · Current limits" width="100%" /></picture></h2>
+
+## <img src="assets/readme-builder/icons/shield.svg" width="24" height="24" alt="" /> Current limits
 
 List the boundaries that matter to a user making a decision. Avoid unsupported performance or compatibility claims.
 

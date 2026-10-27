@@ -41,7 +41,10 @@ class BuilderTests(unittest.TestCase):
                     self.assertNotIn("<script>", content)
                     self.assertNotIn("foreignObject", content)
             self.assertIn("&lt;test&gt;", files["assets/readme-builder/en/hero-dark.svg"])
-            self.assertIn("<h2><picture>", files["README.md"])
+            self.assertIn('## <img src="assets/readme-builder/icons/rocket.svg"', files["README.md"])
+            self.assertNotIn('<h2><picture>', files["README.md"])
+            self.assertNotIn('src="assets/readme-builder/divider.svg"', files["README.md"])
+            self.assertIn('- **Local.** No remote rendering.', files["README.md"])
 
     def test_all_original_icons_parse(self):
         for name in PATHS:

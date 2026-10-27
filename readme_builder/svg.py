@@ -44,6 +44,8 @@ def hero(name, tagline, eyebrow="OPEN SOURCE / BUILT WITH INTENT", theme="aurora
     """Render an editorial hero with a geometric document mark."""
     p = palette(theme, mode)
     b = f'<rect width="1200" height="360" rx="24" fill="{p["bg"]}"/>'
+    b += '<defs><radialGradient id="atmosphere"><stop stop-color="' + p['a'] + '" stop-opacity=".2"/><stop offset="1" stop-color="' + p['a'] + '" stop-opacity="0"/></radialGradient></defs>'
+    b += '<g class="rb-ambient" aria-hidden="true" opacity=".48"><circle cx="1020" cy="100" r="310" fill="url(#atmosphere)"/></g>'
     for x in range(0, 1200, 40):
         b += f'<path d="M{x} 0v360" stroke="{p["line"]}" opacity=".28"/>'
     for y in range(0, 360, 40):
@@ -60,14 +62,13 @@ def hero(name, tagline, eyebrow="OPEN SOURCE / BUILT WITH INTENT", theme="aurora
     b += '<rect x="30" y="28" width="150" height="154" rx="18" fill="none" stroke="url(#brand)" stroke-width="2"/>'
     b += glyph("layers", p["a"], "translate(62 52) scale(3.5)")
     b += '<path d="M58 150h94m-94 14h60" stroke="url(#brand)" stroke-width="5" stroke-linecap="round"/></g>'
-    return frame(1200, 360, f"{name} — {tagline}", b, p)
+    return frame(1200, 360, f"{name} — {tagline}", b, p).replace('<svg ', '<svg data-readme-component="hero" ', 1)
 
 
 def divider(theme="aurora"):
     """Render a restrained gradient rule with a centre mark."""
     p = palette(theme)
-    return frame(1200, 32, "Section divider", '<path d="M40 16h495m130 0h495" stroke="url(#brand)" opacity=".45"/>'
-                 '<path d="m588 16 12-6 12 6-12 6Z" fill="none" stroke="url(#brand)"/>', p)
+    return frame(1200, 12, "Section divider", '<path d="M160 6h880" stroke="url(#brand)" opacity=".22"/>', p)
 
 
 def section(title, number, symbol="layers", theme="aurora", mode="dark"):
@@ -146,12 +147,13 @@ def footer(name, theme="aurora", mode="dark", branding=None):
     """Render a small closing signature."""
     p = palette(theme, mode)
     if branding:
-        b = f'<rect width="1200" height="174" rx="16" fill="{p["bg"]}"/>'
-        b += '<path d="M32 1h1136" stroke="url(#brand)"/>'
-        b += f'<image href="{escape(branding["logo_data"], quote=True)}" x="564" y="18" width="72" height="72"/>'
-        b += text(600, 121, branding["author"], 23, p["fg"], 700, text_anchor="middle")
-        b += text(600, 148, name, 13, p["muted"], text_anchor="middle")
-        return frame(1200, 174, name + " / " + branding["author"], b, p)
+        b = f'<rect width="400" height="164" rx="16" fill="{p["bg"]}"/>'
+        b += '<path d="M32 1h336" stroke="url(#brand)" opacity=".3"/>'
+        b += f'<image href="{escape(branding["logo_data"], quote=True)}" x="174" y="18" width="52" height="52"/>'
+        b += text(200, 103, branding["author"], 20, p["fg"], 700, text_anchor="middle")
+        size = min(14, int(348 / max(len(name), 1) / .6))
+        b += text(200, 132, name, size, p["muted"], text_anchor="middle")
+        return frame(400, 164, name + " / " + branding["author"], b, p)
     b = f'<rect width="1200" height="100" rx="16" fill="{p["bg"]}"/>'
     b += '<path d="M0 1h1200" stroke="url(#brand)"/>'
     b += text(30, 59, name, 23, p["fg"], 700)
