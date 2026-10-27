@@ -88,7 +88,7 @@ def icon_at(name, x, y, size, color):
 def button(label, symbol=None, variant="primary", mode="dark", theme="nebula", trailing=False, small=False):
     """A pill button. Primary buttons carry a slow sheen; outline buttons stay still."""
     p = colors(theme, mode)
-    h, size, pad = (34, 13, 14) if small else (44, 15, 18)
+    h, size, pad = (34, 13, 12) if small else (44, 15, 18)
     isize = 15 if small else 18
     w = pad + (isize + 9 if symbol else 0) + width_of(label, size, 600) + (9 + isize - 2 if trailing else 0) + pad
     w = round(w)
