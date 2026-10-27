@@ -12,7 +12,7 @@ Preserve code fences, examples, existing prose and links when migrating presenta
 Keep SVGs self-contained: no scripts, foreignObject, event handlers, remote images or fonts.
 Escape all text placed in SVG. Never invent project features, metrics, badges or test results.
 Do not modify global agent configuration or publish another repository without user authorization.
-Commit messages are detailed, in Spanish, without co-author trailers.
+Commit messages are detailed, in English, without co-author trailers.
 
 Before finishing:
 
@@ -23,3 +23,10 @@ python -m readme_builder check .
 ```
 
 If component output changes, rebuild the READMEs and visually inspect the SVGs in both themes.
+
+## Commit language
+
+All new Git commit subjects and bodies must be written in English, including merge
+and squash messages. Keep the repository's existing message conventions.
+This applies to all contributors and coding agents, and only to new commits.
+Do not rewrite existing history to translate commit messages.
