@@ -58,6 +58,26 @@ class BuilderTests(unittest.TestCase):
         self.assertIn('&lt;script&gt;title&lt;/script&gt;', readme)
         self.assertIn('Read &lt;details&gt; as text &amp; keep it visible.', readme)
 
+    def test_build_fills_kit_markers_from_section_sources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "kit.json").write_text(json.dumps({"version": 1, "assets": "assets/readme-builder/kit", "blocks": [
+                {"id": "why", "type": "cards", "items": [{"title": {"en": "Local"}, "text": "No network.", "href": "#start"}]}]}),
+                encoding="utf-8")
+            config = configuration()
+            config["kit"] = "kit.json"
+            config["documents"][0]["sections"][0]["body"] = "Intro.\n\n<!-- kit:why -->\n<!-- /kit:why -->"
+            files = render(config, root)
+            self.assertIn('<!-- kit:why -->\n<p align="center"><a href="#start">', files["README.md"])
+            self.assertIn("assets/readme-builder/kit/why-en-01-dark.svg", files)
+            self.assertEqual(files, render(config, root))
+            config["documents"][0]["sections"][0]["body"] = "<!-- kit:missing -->\n<!-- /kit:missing -->"
+            with self.assertRaises(ValueError):
+                render(config, root)
+            config["kit"] = "../outside.json"
+            with self.assertRaises(ValueError):
+                render(config, root)
+
     def test_build_is_deterministic_and_idempotent(self):
         with tempfile.TemporaryDirectory() as directory:
             files = render(configuration(), ROOT)

@@ -109,21 +109,25 @@ def render(config, root):
     folder = config.get("assets", "assets/kit").strip("/")
     local(root, folder)
     files = {}
-    blocks = {b["id"]: b for b in config["blocks"]}
     for name, lang in config["documents"].items():
-        path = local(root, name)
-        text = path.read_text(encoding="utf-8")
-        for ident, spec in blocks.items():
-            pattern = re.compile(r"(<!-- kit:" + re.escape(ident) + r" -->)(.*?)(<!-- /kit:" + re.escape(ident) + r" -->)", re.S)
-            if not pattern.search(text):
-                continue
-            markup = block(spec, lang, folder, theme, files)
-            text = pattern.sub(lambda m: m[1] + "\n" + markup + "\n" + m[3], text)
-        unknown = set(re.findall(r"<!-- kit:([a-z0-9-]+) -->", text)) - set(blocks)
-        if unknown:
-            raise ValueError(f"{name}: no kit block named {', '.join(sorted(unknown))}")
-        files[name] = text
+        text = local(root, name).read_text(encoding="utf-8")
+        files[name] = fill(text, config["blocks"], lang, folder, theme, files, name)
     return files
+
+
+def fill(text, blocks, lang, folder, theme, files, name="README.md"):
+    """Replace every `<!-- kit:ID -->…<!-- /kit:ID -->` region in text; assets go into files."""
+    blocks = {b["id"]: b for b in blocks}
+    for ident, spec in blocks.items():
+        pattern = re.compile(r"(<!-- kit:" + re.escape(ident) + r" -->)(.*?)(<!-- /kit:" + re.escape(ident) + r" -->)", re.S)
+        if not pattern.search(text):
+            continue
+        markup = block(spec, lang, folder, theme, files)
+        text = pattern.sub(lambda m: m[1] + "\n" + markup + "\n" + m[3], text)
+    unknown = set(re.findall(r"<!-- kit:([a-z0-9-]+) -->", text)) - set(blocks)
+    if unknown:
+        raise ValueError(f"{name}: no kit block named {', '.join(sorted(unknown))}")
+    return text
 
 
 # ------------------------------------------------------------------ upgrade

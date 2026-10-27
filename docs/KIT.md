@@ -7,7 +7,7 @@ self-contained. Motion is CSS-only, slow, decorative and disabled by
 
 Themes: `nebula` (default: violet → indigo → sky), `aurora`, `ember`, `ocean`.
 
-## Two ways to use it
+## Three ways to use it
 
 ### 1. Upgrade an existing README
 
@@ -75,6 +75,19 @@ Any string may be `{"en": "…", "es": "…"}`. A marker may appear more than on
 
 Copy that would overflow a card or bento cell is refused, not clipped.
 Icons come from `python -m readme_builder icons`.
+
+### 3. Inside a `readme.json` build
+
+Repositories that generate their README with `build` can use the same blocks.
+Point `readme.json` at a kit spec and put markers in any section source:
+
+```json
+{"version": 1, "name": "demo", "kit": "kit.json", "documents": [...]}
+```
+
+`build` fills the markers after composing each document, so `build --check`
+still detects drift. The kit file uses the format above; its `documents` key
+is not needed because the build already knows each document's language.
 
 The [profile README](https://github.com/robgallardof/robgallardof/blob/main/kit.json)
 is a complete example.

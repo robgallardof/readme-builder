@@ -152,6 +152,14 @@ def render(config, source_root):
     """Compile authored JSON and content files to an in-memory output mapping."""
     validate(config)
     files = {}
+    # Optional showcase-kit spec (same format as `kit render`) for markers in section sources.
+    kit_config, kit_folder = None, None
+    if config.get("kit"):
+        kit_config = json.loads(local(source_root, config["kit"]).read_text(encoding="utf-8"))
+        if kit_config.get("version") != 1:
+            raise ValueError("kit config version must be 1")
+        kit_folder = kit_config.get("assets", "assets/readme-builder/kit").strip("/")
+        local(source_root, kit_folder)
     branding = config.get("branding")
     if branding:
         branding = dict(branding)
@@ -238,9 +246,13 @@ def render(config, source_root):
             '<p align="center">' + part + '</p>' if part.startswith(("<picture>", "<img ")) else part
             for part in parts) + "\n"
         # Navigation, language switch, dividers and back-to-top use the kit.
-        from .kitbuild import upgrade
+        from .kitbuild import upgrade, fill
         document, chrome = upgrade(document, doc.get("file", "README.md"), theme=theme)
         files.update(chrome)
+        if kit_config:
+            # Section sources may carry <!-- kit:ID --> markers (cards, bento, buttons…).
+            document = fill(document, kit_config["blocks"], language, kit_folder,
+                            kit_config.get("theme", "nebula"), files, doc.get("file", "README.md"))
         files[doc.get("file", "README.md")] = document
     return {name: animate_svg(content, config.get("motion", "subtle")) if name.endswith(".svg") else content
             for name, content in files.items()}
