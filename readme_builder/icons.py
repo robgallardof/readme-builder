@@ -1,4 +1,4 @@
-"""Original 24px line icons; all paths are authored in this project, MIT licensed."""
+"""Original 24px icons plus a licensed, vendored Lucide subset."""
 
 from html import escape
 
@@ -37,6 +37,12 @@ PATHS = {
     "flag": '<path d="M5 22V3c5-5 9 5 15 0v12c-6 5-10-5-15 0"/>',
     "bolt": '<path d="m14 2-11 12h8l-1 8 11-13h-8Z"/>',
 }
+
+
+# Third-party geometry is bundled with its original notices; no network at runtime.
+from .lucide import PATHS as LUCIDE_PATHS, NOTICE as LUCIDE_NOTICE
+PATHS.update({"lucide-" + name: "<!-- " + LUCIDE_NOTICE.replace("--", "—") + " -->" + body
+              for name, body in LUCIDE_PATHS.items()})
 
 
 def glyph(name: str, color: str = "#8b5cf6", transform: str = "") -> str:

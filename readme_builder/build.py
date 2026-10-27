@@ -9,6 +9,7 @@ import tempfile
 import os
 
 from . import svg
+from .motion import animate_svg, PRESETS
 from .icons import PATHS
 from .markdown import migrate, slug
 from .markdown import EMOJI
@@ -66,6 +67,8 @@ def validate(config):
     bounded(config.get("name"), "name", 64)
     if config.get("theme", "aurora") not in svg.THEMES:
         raise ValueError("theme must be aurora, ember or ocean")
+    if config.get("motion", "subtle") not in PRESETS:
+        raise ValueError("motion must be off, subtle or ambient")
     documents = config.get("documents")
     if not isinstance(documents, list) or not documents:
         raise ValueError("documents must be a nonempty list")
@@ -172,8 +175,11 @@ def render(config, source_root):
             files[f"{prefix}/footer-{mode}.svg"] = svg.footer(config["name"], theme, mode)
         parts.append(picture(f"{prefix}/footer", config["name"]))
         parts.append('<p align="center"><a href="#top">Back to top</a></p>')
-        files[doc.get("file", "README.md")] = "\n\n".join(parts) + "\n"
-    return files
+        files[doc.get("file", "README.md")] = "\n\n".join(
+            '<p align="center">' + part + '</p>' if part.startswith(("<picture>", "<img ")) else part
+            for part in parts) + "\n"
+    return {name: animate_svg(content, config.get("motion", "subtle")) if name.endswith(".svg") else content
+            for name, content in files.items()}
 
 
 def write_outputs(files, root, check=False, force=False):

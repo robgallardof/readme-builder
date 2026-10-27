@@ -13,6 +13,7 @@ Top-level fields:
 | `version` | Required; currently `1`. |
 | `name` | Required; 1–64 characters. |
 | `theme` | `aurora` (default), `ember`, or `ocean`. |
+| `motion` | `subtle` (default; two cycles / four seconds), `ambient` (continuous), or `off`. Reduced-motion preference always wins. |
 | `documents` | One or more documents with distinct languages and output filenames. |
 
 Each document:

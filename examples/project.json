@@ -9,16 +9,49 @@
       "tagline": "A small example. Replace this copy with evidence from your repository.",
       "eyebrow": "AN AUTHORING EXAMPLE / NOT A PRODUCT CLAIM",
       "features": [
-        {"title": "Clear purpose", "text": "Explain one concrete problem the project solves. Replace this placeholder before publishing.", "icon": "target"},
-        {"title": "An honest quickstart", "text": "Document the shortest verified path from clone to a useful result.", "icon": "terminal"},
-        {"title": "Visible boundaries", "text": "Describe current limits and link to the evidence that supports your claims.", "icon": "shield"}
+        {
+          "title": "Clear purpose",
+          "text": "Explain one concrete problem the project solves. Replace this placeholder before publishing.",
+          "icon": "target"
+        },
+        {
+          "title": "An honest quickstart",
+          "text": "Document the shortest verified path from clone to a useful result.",
+          "icon": "terminal"
+        },
+        {
+          "title": "Visible boundaries",
+          "text": "Describe current limits and link to the evidence that supports your claims.",
+          "icon": "shield"
+        }
       ],
-      "pipeline": ["Read the repository", "Write the story", "Generate assets", "Review the result"],
+      "pipeline": [
+        "Read the repository",
+        "Write the story",
+        "Generate assets",
+        "Review the result"
+      ],
       "sections": [
-        {"id": "overview", "title": "What this project does", "icon": "layers", "body": "Replace this paragraph with the intended user, the problem, and the resulting behaviour. This is an authoring template, not an implemented product."},
-        {"id": "start", "title": "Quickstart", "icon": "rocket", "body": "List real requirements and commands you have verified. Label anything not executed.\n\n```sh\n# Replace with your project's verified setup command.\n```"},
-        {"id": "limits", "title": "Current limits", "icon": "shield", "body": "List the boundaries that matter to a user making a decision. Avoid unsupported performance or compatibility claims."}
+        {
+          "id": "overview",
+          "title": "What this project does",
+          "icon": "layers",
+          "body": "Replace this paragraph with the intended user, the problem, and the resulting behaviour. This is an authoring template, not an implemented product."
+        },
+        {
+          "id": "start",
+          "title": "Quickstart",
+          "icon": "rocket",
+          "body": "List real requirements and commands you have verified. Label anything not executed.\n\n```sh\n# Replace with your project's verified setup command.\n```"
+        },
+        {
+          "id": "limits",
+          "title": "Current limits",
+          "icon": "shield",
+          "body": "List the boundaries that matter to a user making a decision. Avoid unsupported performance or compatibility claims."
+        }
       ]
     }
-  ]
+  ],
+  "motion": "subtle"
 }

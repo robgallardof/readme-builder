@@ -7,7 +7,8 @@ name = "readme-builder-svg"
 version = "0.1.0"
 description = "Offline README design system with original SVG components and agent prompts"
 requires-python = ">=3.11"
-license = "MIT"
+license = "MIT AND ISC"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 authors = [{name = "Roberto Gallardo"}]
 readme = "README.md"
 dependencies = []

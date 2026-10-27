@@ -34,3 +34,9 @@ put essential instructions in normal Markdown, too.
 Design direction: generous space, one restrained accent gradient, consistent corner
 radii, an editorial hierarchy, and repeated components only where they help scanning.
 Prefer useful content over adding every available widget.
+
+## Motion and reusable icons
+
+Set top-level `motion` to `subtle`, `ambient`, or `off`. Motion decorates the top edge; it never moves text or changes chart values. Subtle motion stops after four seconds. CSS reduced-motion media queries disable every injected effect. The static layout remains useful in renderers without CSS animation.
+
+The optional `lucide-` vocabulary contains 39 vendored icons with original notices; see [licenses](../THIRD_PARTY_NOTICES.md). `animate` previews file changes by default, refuses executable/external SVG markup, and can remove only its own animation block with `--preset off`. Existing animation from another generator is preserved.

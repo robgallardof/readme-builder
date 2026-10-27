@@ -11,6 +11,7 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from . import __version__
+from .motion import animate_svg, PRESETS
 from .build import atomic_write, local, render, write_outputs
 from .icons import PATHS, icon
 from .markdown import EMOJI, SHORTCODE, migrate, slug
@@ -151,9 +152,29 @@ def main(argv=None):
     gallery = commands.add_parser("preview", help="write a local SVG contact sheet")
     gallery.add_argument("root", type=Path)
     gallery.add_argument("--output", type=Path, default=Path("preview.html"))
+    animation = commands.add_parser("animate", help="animate local SVG assets; dry-run by default")
+    animation.add_argument("files", nargs="+", type=Path)
+    animation.add_argument("--preset", choices=PRESETS, default="subtle")
+    animation.add_argument("--write", action="store_true")
     commands.add_parser("icons", help="list available original icons")
     args = parser.parse_args(argv)
     try:
+        if args.command == "animate":
+            changes = []
+            for path in args.files:
+                if path.suffix.lower() != ".svg" or any(p.is_symlink() for p in (path, *path.parents)):
+                    raise ValueError(f"expected a regular local SVG path: {path}")
+                source = path.read_bytes().decode("utf-8")
+                result = animate_svg(source, args.preset)
+                if result != source:
+                    changes.append((path, source, result))
+            if args.write and any(path.read_bytes().decode("utf-8") != source for path, source, _ in changes):
+                raise ValueError("SVG changed while planning; nothing was written")
+            for path, source, result in changes:
+                if args.write:
+                    atomic_write(path, result)
+                print(f"{path}: {args.preset}; {'updated' if args.write else 'dry-run'}")
+            return 0
         if args.command == "build":
             config = json.loads(args.config.read_text(encoding="utf-8-sig"))
             files = render(config, args.config.parent)
@@ -177,6 +198,6 @@ def main(argv=None):
         if args.command == "icons":
             print("\n".join(PATHS))
         return 0
-    except (ValueError, OSError, KeyError, TypeError) as error:
+    except (ValueError, OSError, KeyError, TypeError, ET.ParseError) as error:
         print(f"readme-builder: {error}", file=sys.stderr)
         return 2
