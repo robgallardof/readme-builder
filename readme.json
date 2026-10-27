@@ -82,7 +82,8 @@
           "source": "content/en/develop.md",
           "stage": "contribute"
         }
-      ]
+      ],
+      "hero_note": "DESIGN THE FIRST IMPRESSION."
     },
     {
       "file": "README.es.md",
@@ -163,7 +164,8 @@
           "source": "content/es/develop.md",
           "stage": "contribute"
         }
-      ]
+      ],
+      "hero_note": "DISEÑA LA PRIMERA IMPRESIÓN."
     }
   ],
   "motion": "subtle",

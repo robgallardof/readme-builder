@@ -43,8 +43,8 @@ def frame(width, height, title, body, p):
             f'{body}</svg>\n')
 
 
-def hero(name, tagline, eyebrow="OPEN SOURCE / BUILT WITH INTENT", theme="aurora", mode="dark"):
-    """Render an editorial hero with a geometric document mark."""
+def hero(name, tagline, eyebrow="OPEN SOURCE / BUILT WITH INTENT", theme="aurora", mode="dark", note=None):
+    """Render an editorial hero with a geometric document mark; `note` is an optional footer line."""
     p = palette(theme, mode)
     b = f'<rect width="1200" height="360" rx="24" fill="{p["bg"]}"/>'
     b += '<defs><radialGradient id="atmosphere"><stop stop-color="' + p['a'] + '" stop-opacity=".2"/><stop offset="1" stop-color="' + p['a'] + '" stop-opacity="0"/></radialGradient></defs>'
@@ -59,7 +59,8 @@ def hero(name, tagline, eyebrow="OPEN SOURCE / BUILT WITH INTENT", theme="aurora
     b += text(52, 159, name, size, p["fg"], 800, letter_spacing="-2")
     for i, line in enumerate(textwrap.wrap(tagline, 65)):
         b += text(56, 208 + i * 29, line, 21, p["muted"])
-    b += text(56, 315, "DESIGN THE FIRST IMPRESSION.", 11, p["muted"], 600, letter_spacing="2")
+    if note:
+        b += text(56, 315, note, 11, p["muted"], 600, letter_spacing="2")
     b += '<g transform="translate(930 76)">'
     b += f'<rect width="210" height="210" rx="42" fill="{p["panel"]}" stroke="{p["line"]}"/>'
     b += '<rect x="30" y="28" width="150" height="154" rx="18" fill="none" stroke="url(#brand)" stroke-width="2"/>'

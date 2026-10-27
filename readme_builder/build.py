@@ -105,6 +105,8 @@ def validate(config):
             raise ValueError("document languages must be distinct")
         languages.add(doc.get("language", "en"))
         bounded(doc.get("eyebrow", "OPEN SOURCE / BUILT WITH INTENT"), "eyebrow", 65)
+        if doc.get("hero_note") is not None:
+            bounded(doc["hero_note"], "hero note", 60)
         for item in doc.get("features", []):
             bounded(item.get("title"), "feature title", 24)
             bounded(item.get("text"), "feature text", 140)
@@ -190,7 +192,7 @@ def render(config, source_root):
                 f'<a href="{d.get("file", "README.md")}">{escape(d.get("label", d.get("language", "en")))}</a>'
                 for d in config["documents"]) + '</p>')
         for mode in ("light", "dark"):
-            files[f"{prefix}/hero-{mode}.svg"] = svg.hero(config["name"], doc["tagline"], doc.get("eyebrow", "OPEN SOURCE / BUILT WITH INTENT"), theme, mode)
+            files[f"{prefix}/hero-{mode}.svg"] = svg.hero(config["name"], doc["tagline"], doc.get("eyebrow", "OPEN SOURCE / BUILT WITH INTENT"), theme, mode, doc.get("hero_note"))
         for widget, renderer in [("features", svg.features), ("metrics", svg.metrics), ("pipeline", svg.pipeline)]:
             if doc.get(widget):
                 for mode in ("light", "dark"):

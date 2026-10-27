@@ -58,6 +58,15 @@ class BuilderTests(unittest.TestCase):
         self.assertIn('&lt;script&gt;title&lt;/script&gt;', readme)
         self.assertIn('Read &lt;details&gt; as text &amp; keep it visible.', readme)
 
+    def test_hero_note_is_opt_in(self):
+        config = configuration()
+        self.assertNotIn("DESIGN THE FIRST IMPRESSION", render(config, ROOT)["assets/readme-builder/en/hero-dark.svg"])
+        config["documents"][0]["hero_note"] = "Made <here>."
+        self.assertIn("Made &lt;here&gt;.", render(config, ROOT)["assets/readme-builder/en/hero-dark.svg"])
+        config["documents"][0]["hero_note"] = "x" * 61
+        with self.assertRaises(ValueError):
+            render(config, ROOT)
+
     def test_build_fills_kit_markers_from_section_sources(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
