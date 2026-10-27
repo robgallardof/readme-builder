@@ -188,7 +188,7 @@ def render(config, source_root):
                     (i["title"] + ": " + i["text"]) if widget == "features" else (i["value"] + " " + i["label"])
                     for i in doc[widget])
                 if widget == "features":
-                    parts.append("\n".join("- **" + item["title"] + ".** " + item["text"] for item in doc[widget]))
+                    parts.append("\n".join("- **" + escape(item["title"]) + ".** " + escape(item["text"]) for item in doc[widget]))
                 else:
                     parts.append(picture(f"{prefix}/{widget}", alt))
         if doc.get("terminal", {}).get("lines"):

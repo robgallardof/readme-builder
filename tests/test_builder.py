@@ -50,6 +50,14 @@ class BuilderTests(unittest.TestCase):
         for name in PATHS:
             ET.fromstring(icon(name))
 
+    def test_native_feature_copy_escapes_html(self):
+        config = configuration()
+        config['documents'][0]['features'][0].update(title='<script>title</script>', text='Read <details> as text & keep it visible.')
+        readme = render(config, ROOT)['README.md']
+        self.assertNotIn('<script>', readme)
+        self.assertIn('&lt;script&gt;title&lt;/script&gt;', readme)
+        self.assertIn('Read &lt;details&gt; as text &amp; keep it visible.', readme)
+
     def test_build_is_deterministic_and_idempotent(self):
         with tempfile.TemporaryDirectory() as directory:
             files = render(configuration(), ROOT)
