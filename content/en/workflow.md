@@ -18,3 +18,5 @@ guard, not a signature or a substitute for Git. Generation does not delete stale
 
 Use `audit ROOT --json` for a machine-readable review. `audit` reports findings and exits
 successfully; `check` exits 1 if any finding remains. Invalid input exits 2.
+
+The diagram below was generated and checked with [Archify](https://github.com/tt-a1i/archify). The source and export license notices are in [assets/diagrams](assets/diagrams).

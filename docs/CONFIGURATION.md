@@ -46,3 +46,48 @@ Stale assets are retained so a later manual reference is not silently broken.
 Each file replacement is atomic, but a multi-file build is not a filesystem transaction.
 Keep work in Git and review the diff before publishing. The generator does not execute
 Markdown, evaluate prompts, fetch URLs, install hooks or invoke project build commands.
+
+## Reading order, owner branding and diagrams
+
+`stage` is optional on sections: `overview`, `start`, `use`, `advanced`, `contribute`,
+`license`. When every section specifies it, the builder orders those stages and keeps
+original order within each stage. Otherwise it preserves the authored order.
+The signature is always last; `check` reports content appended after its closing marker.
+
+```json
+{
+  "diagram_preference": "archify",
+  "branding": {
+    "author": "Your name",
+    "logo": "assets/brand/logo.jpg",
+    "profile": "https://github.com/your-account"
+  }
+}
+```
+
+Branding is opt-in. PNG/JPEG content is validated and embedded in both footer themes;
+local paths cannot escape the config directory. Your reusable template stays unbranded
+until its author opts in. Profile links must use credential-free HTTPS.
+
+An authored section may add an already exported diagram:
+
+```json
+{
+  "id": "workflow",
+  "title": "How it works",
+  "stage": "advanced",
+  "diagram": {
+    "provider": "archify",
+    "light": "assets/diagrams/workflow-light.svg",
+    "dark": "assets/diagrams/workflow-dark.svg",
+    "alt": "The verified path from request to result"
+  }
+}
+```
+
+The builder validates and copies local SVGs. It does not pretend to render Archify,
+execute tools or verify their source claims. `diagram_preference` (`archify`, `svg`,
+`mermaid`) tells an authoring agent what to prefer; an explicit user choice wins.
+Archify runs separately: [official skill](https://github.com/tt-a1i/archify).
+Self-contained exported WOFF2 fonts and safe embedded SVG icons are accepted; remote
+URLs, scripts, event handlers and recursive external content are refused.

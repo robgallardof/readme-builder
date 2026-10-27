@@ -35,3 +35,5 @@ python -m readme_builder animate assets/banner.svg --preset off --write
 Usa nombres como `lucide-brain-circuit`, `lucide-shield-check`,
 `lucide-clapperboard` o `lucide-layout-template`. Los iconos son locales:
 sin CDN ni JavaScript. Las animaciones SVG/SMIL existentes se conservan.
+
+La firma es optativa: indica tu logo y perfil en `branding`. La firma queda al final. Cuando se pida un diagrama, prioriza Archify e importa sus SVG claros y oscuros ya verificados.

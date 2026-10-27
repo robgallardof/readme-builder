@@ -26,74 +26,61 @@
           "icon": "shield"
         }
       ],
-      "metrics": [
-        {
-          "value": "0",
-          "label": "runtime packages"
-        },
-        {
-          "value": "3",
-          "label": "colour themes"
-        },
-        {
-          "value": "8",
-          "label": "component families"
-        },
-        {
-          "value": "EN / ES",
-          "label": "example documents"
-        }
-      ],
-      "terminal": {
-        "title": "A small authoring loop",
-        "lines": [
-          "$ python -m readme_builder build examples/project.json --output demo",
-          "$ python -m readme_builder check demo",
-          "$ python -m readme_builder preview demo --output demo/preview.html"
-        ]
-      },
       "sections": [
         {
           "id": "start",
           "title": "Start with a real repository",
           "icon": "rocket",
-          "source": "content/en/start.md"
+          "source": "content/en/start.md",
+          "stage": "start"
         },
         {
           "id": "components",
           "title": "A small, original design system",
           "icon": "layers",
-          "source": "content/en/components.md"
+          "source": "content/en/components.md",
+          "stage": "use"
         },
         {
           "id": "migrate",
           "title": "Keep the README. Upgrade the presentation.",
           "icon": "repeat",
-          "source": "content/en/migrate.md"
+          "source": "content/en/migrate.md",
+          "stage": "use"
         },
         {
           "id": "agents",
           "title": "Bring your agent. Keep your judgment.",
           "icon": "bot",
-          "source": "content/en/agents.md"
+          "source": "content/en/agents.md",
+          "stage": "use"
         },
         {
           "id": "workflow",
           "title": "Author. Generate. Review.",
           "icon": "workflow",
-          "source": "content/en/workflow.md"
+          "source": "content/en/workflow.md",
+          "stage": "advanced",
+          "diagram": {
+            "provider": "archify",
+            "light": "assets/diagrams/authoring-light.svg",
+            "dark": "assets/diagrams/authoring-dark.svg",
+            "alt": "From repository facts to a useful README, rendered with Archify"
+          }
         },
         {
           "id": "limits",
           "title": "What this tool promises",
           "icon": "shield",
-          "source": "content/en/limits.md"
+          "source": "content/en/limits.md",
+          "stage": "advanced"
         },
         {
           "id": "develop",
           "title": "Build it with us",
           "icon": "code",
-          "source": "content/en/develop.md"
+          "source": "content/en/develop.md",
+          "stage": "contribute"
         }
       ]
     },
@@ -120,77 +107,70 @@
           "icon": "shield"
         }
       ],
-      "metrics": [
-        {
-          "value": "0",
-          "label": "paquetes en ejecución"
-        },
-        {
-          "value": "3",
-          "label": "temas de color"
-        },
-        {
-          "value": "8",
-          "label": "familias de componentes"
-        },
-        {
-          "value": "EN / ES",
-          "label": "documentos de ejemplo"
-        }
-      ],
-      "terminal": {
-        "title": "Un ciclo de autoría pequeño",
-        "lines": [
-          "$ python -m readme_builder build examples/project.json --output demo",
-          "$ python -m readme_builder check demo",
-          "$ python -m readme_builder preview demo --output demo/preview.html"
-        ]
-      },
       "sections": [
         {
           "id": "inicio",
           "title": "Empieza con un repositorio real",
           "icon": "rocket",
-          "source": "content/es/start.md"
+          "source": "content/es/start.md",
+          "stage": "start"
         },
         {
           "id": "componentes",
           "title": "Un sistema visual pequeño y propio",
           "icon": "layers",
-          "source": "content/es/components.md"
+          "source": "content/es/components.md",
+          "stage": "use"
         },
         {
           "id": "migrar",
           "title": "Conserva el README. Mejora su presentación.",
           "icon": "repeat",
-          "source": "content/es/migrate.md"
+          "source": "content/es/migrate.md",
+          "stage": "use"
         },
         {
           "id": "agentes",
           "title": "Trae a tu agente. Conserva tu criterio.",
           "icon": "bot",
-          "source": "content/es/agents.md"
+          "source": "content/es/agents.md",
+          "stage": "use"
         },
         {
           "id": "flujo",
           "title": "Escribe. Genera. Revisa.",
           "icon": "workflow",
-          "source": "content/es/workflow.md"
+          "source": "content/es/workflow.md",
+          "stage": "advanced",
+          "diagram": {
+            "provider": "archify",
+            "light": "assets/diagrams/authoring-es-light.svg",
+            "dark": "assets/diagrams/authoring-es-dark.svg",
+            "alt": "De los hechos del repositorio a un README claro, generado con Archify"
+          }
         },
         {
           "id": "limites",
           "title": "Qué promete esta herramienta",
           "icon": "shield",
-          "source": "content/es/limits.md"
+          "source": "content/es/limits.md",
+          "stage": "advanced"
         },
         {
           "id": "desarrollo",
           "title": "Constrúyelo con nosotros",
           "icon": "code",
-          "source": "content/es/develop.md"
+          "source": "content/es/develop.md",
+          "stage": "contribute"
         }
       ]
     }
   ],
-  "motion": "subtle"
+  "motion": "subtle",
+  "branding": {
+    "author": "Roberto Gallardo",
+    "logo": "assets/brand/rg-logo.jpg",
+    "profile": "https://github.com/robgallardof"
+  },
+  "diagram_preference": "archify"
 }

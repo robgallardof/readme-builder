@@ -11,3 +11,10 @@
   role contracts and cross-platform CI configuration.
 
 See [verification status](docs/STATUS.md) for actual execution and limitations.
+
+## 2026-10-26 — Reading flow and owner signature
+
+- Explicit section stages support beginner-first reading.
+- Optional, validated owner logo/profile branding; signature is always last.
+- Archify export import with local light/dark assets and preserved embedded notices.
+- Authoring prompts prioritize Archify when requested and keep integrations inside usage sections.

@@ -35,6 +35,8 @@ List real requirements and commands you have verified. Label anything not execut
 
 List the boundaries that matter to a user making a decision. Avoid unsupported performance or compatibility claims.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/footer-dark.svg" /><img src="assets/readme-builder/en/footer-light.svg" alt="Your next project" width="100%" /></picture></p>
-
 <p align="center"><a href="#top">Back to top</a></p>
+
+<!-- readme-builder:signature:start -->
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/footer-dark.svg" /><img src="assets/readme-builder/en/footer-light.svg" alt="Your next project" width="100%" /></picture></p>
+<!-- readme-builder:signature:end -->

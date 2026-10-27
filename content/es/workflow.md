@@ -18,3 +18,5 @@ pertenencia; no es una firma ni sustituye a Git. El generador no elimina recurso
 
 `audit RUTA --json` entrega un informe estructurado. `audit` informa sin fallar;
 `check` devuelve 1 si encuentra problemas. Las entradas inválidas devuelven 2.
+
+El diagrama se generó y verificó con [Archify](https://github.com/tt-a1i/archify). La fuente y los avisos de las exportaciones están en [assets/diagrams](assets/diagrams).

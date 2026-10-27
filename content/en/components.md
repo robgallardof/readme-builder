@@ -35,3 +35,5 @@ python -m readme_builder animate assets/banner.svg --preset off --write
 Use icon names such as `lucide-brain-circuit`, `lucide-shield-check`,
 `lucide-clapperboard` and `lucide-layout-template`. All geometry is bundled:
 no CDN or JavaScript is needed. Existing SVG/SMIL animations are preserved.
+
+Owner branding is optional: provide your logo and profile through `branding`. The final signature remains last. For a requested diagram, prefer Archify and import its verified light/dark SVG exports.

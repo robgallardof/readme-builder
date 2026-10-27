@@ -10,10 +10,6 @@
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/features-dark.svg" /><img src="assets/readme-builder/es/features-light.svg" alt="Primero el contenido: Escribe a partir del repositorio real. Conserva los comandos, los límites y los detalles que importan. · Un lenguaje visual: Iconos originales, secciones numeradas, banners y widgets reutilizables. SVG locales, bajo tu control. · Siempre tuyo: Sin servicio de render, clave de API ni paquetes en ejecución. Guarda los recursos en Git y listo." width="100%" /></picture></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/metrics-dark.svg" /><img src="assets/readme-builder/es/metrics-light.svg" alt="0 paquetes en ejecución · 3 temas de color · 8 familias de componentes · EN / ES documentos de ejemplo" width="100%" /></picture></p>
-
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/terminal-dark.svg" /><img src="assets/readme-builder/es/terminal-light.svg" alt="$ python -m readme_builder build examples/project.json --output demo / $ python -m readme_builder check demo / $ python -m readme_builder preview demo --output demo/preview.html" width="100%" /></picture></p>
-
 <p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
 
 <a id="inicio"></a>
@@ -78,6 +74,8 @@ python -m readme_builder animate assets/banner.svg --preset off --write
 Usa nombres como `lucide-brain-circuit`, `lucide-shield-check`,
 `lucide-clapperboard` o `lucide-layout-template`. Los iconos son locales:
 sin CDN ni JavaScript. Las animaciones SVG/SMIL existentes se conservan.
+
+La firma es optativa: indica tu logo y perfil en `branding`. La firma queda al final. Cuando se pida un diagrama, prioriza Archify e importa sus SVG claros y oscuros ya verificados.
 
 <p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
 
@@ -147,6 +145,10 @@ pertenencia; no es una firma ni sustituye a Git. El generador no elimina recurso
 `audit RUTA --json` entrega un informe estructurado. `audit` informa sin fallar;
 `check` devuelve 1 si encuentra problemas. Las entradas inválidas devuelven 2.
 
+El diagrama se generó y verificó con [Archify](https://github.com/tt-a1i/archify). La fuente y los avisos de las exportaciones están en [assets/diagrams](assets/diagrams).
+
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/diagram-05-dark.svg" /><img src="assets/readme-builder/es/diagram-05-light.svg" alt="De los hechos del repositorio a un README claro, generado con Archify" width="100%" /></picture></p>
+
 <p align="center"><img src="assets/readme-builder/divider.svg" alt="" width="100%" /></p>
 
 <a id="limites"></a>
@@ -186,6 +188,8 @@ debe ser portable, accesible y útil fuera de un solo repositorio.
 
 [MIT](LICENSE) · Iconos y componentes SVG originales de Roberto Gallardo.
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="100%" /></picture></p>
+<p align="center"><a href="#top">Volver al inicio</a></p>
 
-<p align="center"><a href="#top">Back to top</a></p>
+<!-- readme-builder:signature:start -->
+<p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/es/footer-dark.svg" /><img src="assets/readme-builder/es/footer-light.svg" alt="readme-builder" width="100%" /></picture></a></p>
+<!-- readme-builder:signature:end -->

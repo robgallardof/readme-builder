@@ -11,7 +11,7 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from . import __version__
-from .motion import animate_svg, PRESETS
+from .motion import animate_svg, validate_svg, PRESETS
 from .build import atomic_write, local, render, write_outputs
 from .icons import PATHS, icon
 from .markdown import EMOJI, SHORTCODE, migrate, slug
@@ -52,6 +52,10 @@ def inspect(root):
     for path in readmes(root):
         name = path.relative_to(root).as_posix()
         source = path.read_text(encoding="utf-8-sig")
+        if "<!-- readme-builder:signature:end -->" in source:
+            tail = source.split("<!-- readme-builder:signature:end -->", 1)[1].strip()
+            if tail:
+                issues.append(dict(file=name, line=0, kind="footer-order", message="content appears after the signature"))
         rows = list(visible_lines(source))
         ids = set(re.findall(r'<a\s+(?:id|name)=["\x27]([^"\x27]+)', source))
         ids.update(slug(m[1]) for _, line in rows if (m := re.match(r"^#{1,6} (.+)", line)))
@@ -82,17 +86,7 @@ def inspect(root):
                 issues.append(dict(file=str(path), line=0, kind="svg", message="asset escapes repository"))
                 continue
             try:
-                tree = ET.fromstring(path.read_bytes())
-                raw = path.read_text(encoding="utf-8")
-                if re.search(r'url\(\s*["\x27]?(?!#)[^\s)]|@import', raw, re.IGNORECASE):
-                    raise ValueError("external SVG CSS reference")
-                if tree.tag != "{http://www.w3.org/2000/svg}svg":
-                    raise ValueError("not an SVG root")
-                for element in tree.iter():
-                    if element.tag.rsplit("}", 1)[-1] in {"script", "foreignObject", "image", "use"}:
-                        raise ValueError("executable or external SVG element")
-                    if any(k.lower().startswith("on") or k.endswith("href") for k in element.attrib):
-                        raise ValueError("event handler or external reference")
+                validate_svg(path.read_text(encoding="utf-8"))
             except (ET.ParseError, ValueError) as error:
                 issues.append(dict(file=path.relative_to(root).as_posix(), line=0, kind="svg", message=str(error)))
     return issues

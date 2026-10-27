@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "De los hechos a un README claro",
+    "locale": "es",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/robgallardof/readme-builder.git",
+      "revision": "808825e03ab6b2c753edd4597a182f0084db1d02"
+    },
+    "output": ".archify/authoring-es-20261026-194000/diagram.html"
+  },
+  "lanes": [
+    {
+      "id": "author",
+      "label": "Decisiones del autor"
+    },
+    {
+      "id": "builder",
+      "label": "Generador local"
+    }
+  ],
+  "mainPath": [
+    "step0",
+    "step1",
+    "step2",
+    "step3",
+    "step4"
+  ],
+  "nodes": [
+    {
+      "id": "step0",
+      "lane": "author",
+      "col": 0,
+      "type": "external",
+      "label": "Escribir la historia",
+      "sublabel": "Hechos y un inicio claro",
+      "sources": [
+        {
+          "path": "content/es/start.md"
+        }
+      ]
+    },
+    {
+      "id": "step1",
+      "lane": "author",
+      "col": 1,
+      "type": "frontend",
+      "label": "Preparar contenido",
+      "sublabel": "JSON y Markdown",
+      "sources": [
+        {
+          "path": "examples/project.json"
+        }
+      ]
+    },
+    {
+      "id": "step2",
+      "lane": "builder",
+      "col": 2,
+      "type": "backend",
+      "label": "Generar recursos",
+      "sublabel": "SVG y archivos README",
+      "sources": [
+        {
+          "path": "readme_builder/build.py"
+        }
+      ]
+    },
+    {
+      "id": "step3",
+      "lane": "builder",
+      "col": 3,
+      "type": "security",
+      "label": "Revisar resultado",
+      "sublabel": "Enlaces, seguridad y cambios",
+      "sources": [
+        {
+          "path": "readme_builder/cli.py"
+        }
+      ]
+    },
+    {
+      "id": "step4",
+      "lane": "author",
+      "col": 4,
+      "type": "cloud",
+      "label": "Publicar cuando quieras",
+      "sublabel": "El autor decide",
+      "sources": [
+        {
+          "path": "CONTRIBUTING.md"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge0",
+      "from": "step0",
+      "to": "step1"
+    },
+    {
+      "id": "edge1",
+      "from": "step1",
+      "to": "step2"
+    },
+    {
+      "id": "edge2",
+      "from": "step2",
+      "to": "step3"
+    },
+    {
+      "id": "edge3",
+      "from": "step3",
+      "to": "step4"
+    }
+  ]
+}

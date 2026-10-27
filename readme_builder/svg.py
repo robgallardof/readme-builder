@@ -142,9 +142,16 @@ def pipeline(steps, theme="aurora", mode="dark"):
     return frame(1200, 130, " → ".join(steps), b, p)
 
 
-def footer(name, theme="aurora", mode="dark"):
+def footer(name, theme="aurora", mode="dark", branding=None):
     """Render a small closing signature."""
     p = palette(theme, mode)
+    if branding:
+        b = f'<rect width="1200" height="174" rx="16" fill="{p["bg"]}"/>'
+        b += '<path d="M32 1h1136" stroke="url(#brand)"/>'
+        b += f'<image href="{escape(branding["logo_data"], quote=True)}" x="564" y="18" width="72" height="72"/>'
+        b += text(600, 121, branding["author"], 23, p["fg"], 700, text_anchor="middle")
+        b += text(600, 148, name, 13, p["muted"], text_anchor="middle")
+        return frame(1200, 174, name + " / " + branding["author"], b, p)
     b = f'<rect width="1200" height="100" rx="16" fill="{p["bg"]}"/>'
     b += '<path d="M0 1h1200" stroke="url(#brand)"/>'
     b += text(30, 59, name, 23, p["fg"], 700)

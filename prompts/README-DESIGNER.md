@@ -40,3 +40,26 @@ Run the generator, inspect `--check`, audit local links, and visually review the
 SVGs. Fix overflow and broken references before delivery. Respect the target repository's
 contribution rules. Do not modify global agent configuration or publish to other
 repositories. Commit/push only within the authorization supplied for the target project.
+
+## Reading order and a real ending
+
+Start with what the project helps a person do. Follow with prerequisites, the shortest
+working start, common tasks, optional integrations, and only then configuration,
+architecture, reference, limits and development. Do not lead with internal terminology
+or paste a new integration after the signature. Put that content beside installation
+or agent usage, and link its detailed guide. Preserve useful commands and honest limits.
+
+Use `stage` on every section to request deterministic beginner-to-advanced ordering.
+Keep the signature as the final block; back-to-top links and credits belong before it.
+Use the repository owner's supplied logo through `branding`, not an invented substitute.
+Never impose Roberto's personal signature on a different owner's project.
+
+## Diagrams: prefer Archify when requested
+
+When the user asks for Archify, use the real Archify skill/CLI and its official schema.
+Read the repository slice that proves the diagram. Retain source JSON, finish its
+validation/delivery/browser gates, and export canonical light/dark SVGs. Use the
+section `diagram` field to import them; choose everyday labels before technical detail.
+An imported image is not evidence that Archify ran: report only gates actually executed.
+The Python generator does not install Archify or run its commands. Keep a working
+Mermaid/source diagram as an optional technical reference when it is still useful.
