@@ -38,4 +38,30 @@ no CDN or JavaScript is needed. Existing SVG/SMIL animations are preserved.
 
 Owner branding is optional: provide your logo and profile through `branding`. The final signature remains last. For a requested diagram, prefer Archify and import its verified light/dark SVG exports.
 
-Headings and feature descriptions use real Markdown so text wraps at the reader's font size. The hero is the only animated component; separators, icons, diagrams and the closing signature stay still.
+Headings and feature descriptions use real Markdown so text wraps at the reader's font size. Text never moves; only decorative accents do.
+
+### Showcase kit
+
+Plain link rows and walls of text become designed pieces. Every kit component has
+light and dark variants, slow CSS-only motion and a `prefers-reduced-motion` off switch.
+
+| Component | Use it for | Motion |
+|---|---|---|
+| **Button** | Links, navigation, language switch, back to top | A sheen on primary buttons |
+| **Stats** | A row of short, declared facts instead of `a · b · c` text | A glint on each top rule |
+| **Wave** | The divider between sections | Two lines flow in opposite directions |
+| **Heading** | A numbered section opener for profiles and landing pages | A light travels along the rule |
+| **Card** | Linkable project cards, two per row | A status pulse on badges |
+| **Bento** | An about grid with cells of different widths | Soft orbs on wide cells |
+| **Panels** | Grouped chips (a stack) or short lists (a toolbox) | Still |
+
+Fill marked blocks from a JSON spec, or upgrade an existing README in place:
+
+```sh
+python -m readme_builder kit render kit.json             # fills <!-- kit:ID --> blocks
+python -m readme_builder kit upgrade README.md            # dry run
+python -m readme_builder kit upgrade README*.md --write   # buttons and wave dividers
+```
+
+`build` already uses kit buttons and waves. See the [kit guide](docs/KIT.md); the
+[profile](https://github.com/robgallardof) is built entirely with it.

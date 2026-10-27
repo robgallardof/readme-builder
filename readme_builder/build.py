@@ -234,9 +234,14 @@ def render(config, source_root):
         if branding:
             signature = f'<a href="{escape(branding["profile"], quote=True)}">{signature}</a>'
         parts.append('<!-- readme-builder:signature:start -->\n<p align="center">' + signature + '</p>\n<!-- readme-builder:signature:end -->')
-        files[doc.get("file", "README.md")] = "\n\n".join(
+        document = "\n\n".join(
             '<p align="center">' + part + '</p>' if part.startswith(("<picture>", "<img ")) else part
             for part in parts) + "\n"
+        # Navigation, language switch, dividers and back-to-top use the kit.
+        from .kitbuild import upgrade
+        document, chrome = upgrade(document, doc.get("file", "README.md"), theme=theme)
+        files.update(chrome)
+        files[doc.get("file", "README.md")] = document
     return {name: animate_svg(content, config.get("motion", "subtle")) if name.endswith(".svg") else content
             for name, content in files.items()}
 

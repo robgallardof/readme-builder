@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-27 / Showcase kit
+
+- New `kit` module: buttons, stat strips, animated wave dividers, numbered headings, project cards, bento grids and chip/list panels, all with light/dark variants and reduced-motion support.
+- `kit render` fills `<!-- kit:ID -->` README blocks from a bilingual JSON spec; `kit upgrade` converts link rows, for-the-badge navigation and back-to-top links into buttons and adds wave dividers.
+- `build` now emits kit navigation, language buttons, dividers and back-to-top.
+- Overflowing card and bento copy is refused instead of clipped.
+
 ## 2026-10-26 / Header-matched footers
 
 - Added full-width owner closing banners that reuse the accepted header palette and logo treatment.

@@ -6,9 +6,12 @@
 
 <p align="center"><strong>Give your next repository a first impression worth keeping.</strong></p>
 
-<p align="center"><a href="#start">Start with a real repository</a> · <a href="#components">A small, original design system</a> · <a href="#migrate">Keep the README. Upgrade the presentation.</a></p>
+<p align="center"><a href="#start"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-start-with-a-real-repository-outline-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-start-with-a-real-repository-outline-sm-light.svg" alt="Start with a real repository" height="34" /></picture></a>&nbsp;
+<a href="#components"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-a-small-original-design-system-outline-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-a-small-original-design-system-outline-sm-light.svg" alt="A small, original design system" height="34" /></picture></a>&nbsp;
+<a href="#migrate"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-keep-the-readme-upgrade-the-presentation-outline-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-keep-the-readme-upgrade-the-presentation-outline-sm-light.svg" alt="Keep the README. Upgrade the presentation." height="34" /></picture></a></p>
 
-<p align="center"><a href="README.md">English</a> · <a href="README.es.md">Español</a></p>
+<p align="center"><a href="README.md"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-english-primary-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-english-primary-sm-light.svg" alt="English" height="34" /></picture></a>&nbsp;
+<a href="README.es.md"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-espanol-outline-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-espanol-outline-sm-light.svg" alt="Español" height="34" /></picture></a></p>
 
 - **Your content, first.** Write the story from real repository evidence. Keep the commands, limits and details that matter.
 - **A visual language.** Original line icons, numbered sections, themed banners and reusable widgets. All SVG, all local.
@@ -33,6 +36,8 @@ or load it from a local Markdown file. See the [authoring contract](docs/CONFIGU
 The `--output` directory contains portable Markdown and SVG files. Copy those generated
 files into your project, or generate there directly after reviewing the output paths.
 The CLI refuses to overwrite files it does not own. `--force` is an explicit override.
+
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
 
 <a id="components"></a>
 
@@ -78,7 +83,35 @@ no CDN or JavaScript is needed. Existing SVG/SMIL animations are preserved.
 
 Owner branding is optional: provide your logo and profile through `branding`. The final signature remains last. For a requested diagram, prefer Archify and import its verified light/dark SVG exports.
 
-Headings and feature descriptions use real Markdown so text wraps at the reader's font size. The hero is the only animated component; separators, icons, diagrams and the closing signature stay still.
+Headings and feature descriptions use real Markdown so text wraps at the reader's font size. Text never moves; only decorative accents do.
+
+### Showcase kit
+
+Plain link rows and walls of text become designed pieces. Every kit component has
+light and dark variants, slow CSS-only motion and a `prefers-reduced-motion` off switch.
+
+| Component | Use it for | Motion |
+|---|---|---|
+| **Button** | Links, navigation, language switch, back to top | A sheen on primary buttons |
+| **Stats** | A row of short, declared facts instead of `a · b · c` text | A glint on each top rule |
+| **Wave** | The divider between sections | Two lines flow in opposite directions |
+| **Heading** | A numbered section opener for profiles and landing pages | A light travels along the rule |
+| **Card** | Linkable project cards, two per row | A status pulse on badges |
+| **Bento** | An about grid with cells of different widths | Soft orbs on wide cells |
+| **Panels** | Grouped chips (a stack) or short lists (a toolbox) | Still |
+
+Fill marked blocks from a JSON spec, or upgrade an existing README in place:
+
+```sh
+python -m readme_builder kit render kit.json             # fills <!-- kit:ID --> blocks
+python -m readme_builder kit upgrade README.md            # dry run
+python -m readme_builder kit upgrade README*.md --write   # buttons and wave dividers
+```
+
+`build` already uses kit buttons and waves. See the [kit guide](docs/KIT.md); the
+[profile](https://github.com/robgallardof) is built entirely with it.
+
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
 
 <a id="migrate"></a>
 
@@ -102,6 +135,8 @@ emoji. It does not fetch remote links or decide whether a project's claims are t
 For complex nested Markdown, review the diff: this is a conservative scanner, not a
 complete Markdown parser. Keep a Git commit before applying a large migration.
 
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
+
 <a id="agents"></a>
 
 ## <img src="assets/readme-builder/icons/bot.svg" width="24" height="24" alt="" /> Bring your agent. Keep your judgment.
@@ -119,6 +154,8 @@ prompt produces an evidence inventory, a content structure and a generator confi
 [AGENTS.md](AGENTS.md) describes how to contribute to this tool. The
 [role contracts](agents/README.md) help separate evidence, copy and visual review.
 They do not install hooks, edit global settings or automatically spawn other agents.
+
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
 
 <a id="workflow"></a>
 
@@ -149,6 +186,8 @@ The diagram below was generated and checked with [Archify](https://github.com/tt
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/diagram-05-dark.svg" /><img src="assets/readme-builder/en/diagram-05-light.svg" alt="From repository facts to a useful README, rendered with Archify" width="100%" /></picture></p>
 
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
+
 <a id="limits"></a>
 
 ## <img src="assets/readme-builder/icons/shield.svg" width="24" height="24" alt="" /> What this tool promises
@@ -165,6 +204,8 @@ The visual direction comes from [Rekora](https://github.com/robgallardof/rekora)
 [RepoRinse](https://github.com/robgallardof/RepoRinse) and
 [Roberto's profile](https://github.com/robgallardof). Their project-specific copy and
 private repository material are not bundled into this template.
+
+<p align="center"><img src="assets/readme-builder/kit/wave.svg" alt="" width="100%" /></p>
 
 <a id="develop"></a>
 
@@ -186,7 +227,7 @@ portable, accessible and useful outside a single repository.
 
 [MIT](LICENSE) · Original icons and SVG components by Roberto Gallardo.
 
-<p align="center"><a href="#top">Back to top</a></p>
+<p align="center"><a href="#top"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/kit/btn-back-to-top-outline-sm-dark.svg" /><img src="assets/readme-builder/kit/btn-back-to-top-outline-sm-light.svg" alt="Back to top" height="34" /></picture></a></p>
 
 <!-- readme-builder:signature:start -->
 <p align="center"><a href="https://github.com/robgallardof"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/readme-builder/en/footer-dark.svg" /><img src="assets/readme-builder/en/footer-light.svg" alt="readme-builder" width="100%" /></picture></a></p>

@@ -14,6 +14,8 @@ from . import __version__
 from .motion import animate_svg, validate_svg, PRESETS
 from .build import atomic_write, local, render, write_outputs
 from .icons import PATHS, icon
+from .kit import KIT_THEMES
+from .kitbuild import render as kit_render_files, upgrade_file
 from .markdown import EMOJI, SHORTCODE, migrate, slug
 
 EXCLUDED = {".git", "node_modules", "target", ".venv", "vendor", "dist", "build"}
@@ -150,6 +152,15 @@ def main(argv=None):
     animation.add_argument("files", nargs="+", type=Path)
     animation.add_argument("--preset", choices=PRESETS, default="subtle")
     animation.add_argument("--write", action="store_true")
+    kitting = commands.add_parser("kit", help="showcase kit: buttons, stats, waves, headings, cards, bento, panels")
+    kit_commands = kitting.add_subparsers(dest="kit_command", required=True)
+    kit_render = kit_commands.add_parser("render", help="fill <!-- kit:ID --> blocks from a kit JSON spec")
+    kit_render.add_argument("config", type=Path)
+    kit_render.add_argument("--check", action="store_true", help="report drift without writing")
+    kit_upgrade = kit_commands.add_parser("upgrade", help="turn link rows, nav shields and back-to-top into kit buttons; add wave dividers")
+    kit_upgrade.add_argument("files", nargs="+", type=Path)
+    kit_upgrade.add_argument("--theme", default="nebula", choices=sorted(KIT_THEMES))
+    kit_upgrade.add_argument("--write", action="store_true")
     commands.add_parser("icons", help="list available original icons")
     args = parser.parse_args(argv)
     try:
@@ -168,6 +179,21 @@ def main(argv=None):
                 if args.write:
                     atomic_write(path, result)
                 print(f"{path}: {args.preset}; {'updated' if args.write else 'dry-run'}")
+            return 0
+        if args.command == "kit":
+            if args.kit_command == "render":
+                root = args.config.parent.resolve()
+                files = kit_render_files(json.loads(args.config.read_text(encoding="utf-8-sig")), root)
+                changed = [name for name, content in files.items()
+                           if not local(root, name).exists() or local(root, name).read_bytes() != content.encode()]
+                if not args.check:
+                    for name in changed:
+                        atomic_write(local(root, name), files[name])
+                print(json.dumps({"changed": changed, "files": len(files), "check": args.check}, indent=2))
+                return int(args.check and bool(changed))
+            for path in args.files:
+                changed, count = upgrade_file(path, args.write, args.theme)
+                print(f'{path}: {"updated" if args.write else "dry-run"}; changed={changed}; assets={count}')
             return 0
         if args.command == "build":
             config = json.loads(args.config.read_text(encoding="utf-8-sig"))
